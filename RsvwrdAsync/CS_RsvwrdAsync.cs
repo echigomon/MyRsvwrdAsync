@@ -9,8 +9,8 @@ namespace RsvwrdAsync
     public class CS_RsvwrdAsync
     {
         #region 共有領域
-        private String _wbuf;
-        private Boolean _empty;
+        private static String _wbuf;
+        private static Boolean _empty;
         public String Wbuf
         {
             get
@@ -41,7 +41,7 @@ namespace RsvwrdAsync
             RSV_DATA,           // 予約語５：データ型
             RSV_OTHER           // 予約語６：その他
         }
-        private RsvCode _rsvcode;
+        private static RsvCode _rsvcode;
         public Boolean Rsv
         {   // 予約語有無確認　[false]:予約語なし [true]:予約語あり
             get
@@ -63,7 +63,7 @@ namespace RsvwrdAsync
                 return ((int)_rsvcode);
             }
         }
-        private Boolean _Is_namespace;
+        private static Boolean _Is_namespace;
         public Boolean Is_namespace
         {
             get
@@ -75,7 +75,7 @@ namespace RsvwrdAsync
                 _Is_namespace = value;
             }
         }
-        private Boolean _Is_class;
+        private static Boolean _Is_class;
         public Boolean Is_class
         {
             get
@@ -89,7 +89,7 @@ namespace RsvwrdAsync
         }
 
         // 予約語１：クラス
-        private string[] _RsvTable1 =
+        private static readonly string[] _RsvTable1 =
         {   // [Class]
             "class",
             "interface",
@@ -98,7 +98,7 @@ namespace RsvwrdAsync
             "internal"
         };
         // 予約語２：例外
-        private string[] _RsvTable2 =
+        private static readonly string[] _RsvTable2 =
         {   // [Exception]
             "catch",
             "finally",
@@ -106,14 +106,14 @@ namespace RsvwrdAsync
             "try"
         };
         // 予約語３：アクセス修飾子
-        private string[] _RsvTable3 =
+        private static readonly string[] _RsvTable3 =
         {   // [access modifier]
             "private",
             "protected",
             "public"
         };
         // 予約語４：制御フロー文
-        private string[] _RsvTable4 =
+        private static readonly string[] _RsvTable4 =
         {   // [control flow statement]
             "if",
             "else",
@@ -130,7 +130,7 @@ namespace RsvwrdAsync
             "goto"
         };
         // 予約語５：データ型
-        private string[] _RsvTable5 =
+        private static readonly string[] _RsvTable5 =
         {   // [data type]
             "bool",
             "char",
@@ -149,7 +149,7 @@ namespace RsvwrdAsync
             "decimal"
         };
         // 予約語６：その他　　　
-        private string[] _RsvTable6 =
+        private static readonly string[] _RsvTable6 =
         {   // [other type]
             "as",
             "base",
@@ -190,7 +190,7 @@ namespace RsvwrdAsync
             "volatile"
         };
 
-        private char[] _trim = { ' ', '\t', '\r', '\n' };
+        private static readonly char[] _trim = { ' ', '\t', '\r', '\n' };
         #endregion
 
 
@@ -394,7 +394,7 @@ namespace RsvwrdAsync
                     else
                     {
                         if (_rsvcode == RsvCode.RSV_CLASS && _wbuf == "class")
-                        {   // [namespace]検出？
+                        {   // [class]検出？
                             _Is_class = true;       // [class]検出
                             _Is_namespace = false;
                         }
