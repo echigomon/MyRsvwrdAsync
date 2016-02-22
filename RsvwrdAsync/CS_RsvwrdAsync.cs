@@ -89,7 +89,6 @@ namespace RsvwrdAsync
         }
         // '16.02.22 Function情報設定
         private static Boolean _Is_func;
-        private static int _pos;
         public Boolean Is_func
         {
             get
@@ -99,6 +98,18 @@ namespace RsvwrdAsync
             set
             {
                 _Is_func = value;
+            }
+        }
+        private static int _pos;
+        public int Pos
+        {
+            get
+            {
+                return (_pos);
+            }
+            set
+            {
+                _pos = value;
             }
         }
 

@@ -71,6 +71,12 @@ namespace MyWindows
                 WriteLineResult("\n Find : [Namespace]");
                 rsvwrd.Is_namespace = false;
             }
+            if (rsvwrd.Is_func == true)
+            {   // [Function]検出？
+                WriteLineResult("\n Find : [Function]");
+                WriteLineResult("\n Pos : [{0}]", rsvwrd.Pos);
+                rsvwrd.Is_func = false;
+            }
         }
         #endregion
 
