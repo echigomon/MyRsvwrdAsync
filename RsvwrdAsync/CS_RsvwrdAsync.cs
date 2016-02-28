@@ -335,7 +335,7 @@ namespace RsvwrdAsync
                         {
                             if (_rsvcode == RsvCode.RSV_NONE)
                             {   // 未定義？
-                                await Chkfnc(_wbuf);   // [Function]有効確認
+                                await ChkfncAsync(_wbuf);   // [Function]有効確認
                             }
                         }
                     }
@@ -344,7 +344,7 @@ namespace RsvwrdAsync
         }
         public async Task ExecAsync(String msg)
         {   // 予約語確認
-            await Setbuf(msg);                 // 入力内容の作業領域設定
+            await SetbufAsync(msg);                 // 入力内容の作業領域設定
 
             if (!_empty)
             {   // バッファーに実装有り
@@ -439,7 +439,7 @@ namespace RsvwrdAsync
                         {
                             if (_rsvcode == RsvCode.RSV_NONE)
                             {   // 未定義？
-                                await Chkfnc(_wbuf);   // [Function]有効確認
+                                await ChkfncAsync(_wbuf);   // [Function]有効確認
                             }
                         }
                     }
@@ -447,7 +447,7 @@ namespace RsvwrdAsync
             }
         }
 
-        private async Task Setbuf(String _strbuf)
+        private async Task SetbufAsync(String _strbuf)
         {   // [_wbuf]情報設定
             _wbuf = _strbuf;
             if (_wbuf == null)
@@ -461,7 +461,7 @@ namespace RsvwrdAsync
 
             _rsvcode = RsvCode.RSV_NONE;    // 予約語：未定義
         }
-        private async Task Chkfnc(String _strbuf)
+        private async Task ChkfncAsync(String _strbuf)
         {   // [Function]有効確認
             if (string.IsNullOrEmpty(_strbuf))
             {   // 設定情報はNULL？ 
